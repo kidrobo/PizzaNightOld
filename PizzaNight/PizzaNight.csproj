@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,6 +34,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -55,7 +57,9 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Helpers.Crypto, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Web.Helpers.Crypto.3.2.3\lib\net40\System.Web.Helpers.Crypto.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -129,14 +133,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="Admin\LASER.aspx" />
     <Content Include="Bruh.aspx" />
     <Content Include="Contact.aspx" />
+    <Content Include="Content\Blade-Runner-Movie-Font.ttf.svg" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.icon-large.min.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\landing-page.css" />
     <Content Include="Content\landing-page.min.css" />
+    <Content Include="Content\stylesheet.css" />
     <Content Include="Deets.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
@@ -157,7 +164,7 @@
     <Content Include="img\MexicanGuy.jpg" />
     <Content Include="img\OldWhiteGuy.jpg" />
     <Content Include="img\TheRoomPizza.jpg" />
-    <Content Include="obj\Debug\CoreCompileInputs.cache" />
+    <Content Include="LASERDiscs.aspx" />
     <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <Content Include="Master.Master" />
     <Content Include="PizzaNight.dbml">
@@ -165,6 +172,10 @@
       <LastGenOutput>PizzaNight.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Content\BladeRunnerMovieFont.woff" />
+    <Content Include="Content\BladeRunnerMovieFont.woff2" />
+    <Content Include="Content\Blade-Runner-Movie-Font.ttf.eot" />
+    <Content Include="Content\Blade-Runner-Movie-Font.ttf.woff" />
     <None Include="PizzaNight.dbml.layout">
       <DependentUpon>PizzaNight.dbml</DependentUpon>
     </None>
@@ -228,10 +239,8 @@
     <Content Include="vendor\jquery\jquery.slim.min.js" />
     <Content Include="vendor\simple-line-icons\css\simple-line-icons.css" />
     <Content Include="vendor\simple-line-icons\fonts\Simple-Line-Icons.svg" />
-    <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
-    <Content Include="Site.Mobile.Master" />
     <Content Include="scss\landing-page.scss" />
     <Content Include="scss\_call-to-action.scss" />
     <Content Include="scss\_footer.scss" />
@@ -297,6 +306,13 @@
     <Compile Include="About.aspx.designer.cs">
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\LASER.aspx.cs">
+      <DependentUpon>LASER.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\LASER.aspx.designer.cs">
+      <DependentUpon>LASER.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Bruh.aspx.cs">
@@ -329,6 +345,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="LASERDiscs.aspx.cs">
+      <DependentUpon>LASERDiscs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LASERDiscs.aspx.designer.cs">
+      <DependentUpon>LASERDiscs.aspx</DependentUpon>
     </Compile>
     <Compile Include="Master.Master.cs">
       <DependentUpon>Master.Master</DependentUpon>
@@ -367,26 +390,12 @@
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
-    <Compile Include="Site.Mobile.Master.cs">
-      <DependentUpon>Site.Mobile.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Site.Mobile.Master.designer.cs">
-      <DependentUpon>Site.Mobile.Master</DependentUpon>
-    </Compile>
     <Compile Include="Terms.aspx.cs">
       <DependentUpon>Terms.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Terms.aspx.designer.cs">
       <DependentUpon>Terms.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ViewSwitcher.ascx.cs">
-      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ViewSwitcher.ascx.designer.cs">
-      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

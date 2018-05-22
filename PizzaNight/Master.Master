@@ -15,13 +15,14 @@
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css"/>
     <link href="content/bootstrap.icon-large.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="content/landing-page.min.css" rel="stylesheet">
+    <link href="content/landing-page.min.css" rel="stylesheet" />
+    <link href="content/site.css" rel="stylesheet" />
 
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -32,7 +33,7 @@
         <nav class="navbar navbar-light bg-light static-top">
           <div class="container">
             <a class="navbar-brand" href="/Bruh">Robb's Pizza Night</a>
-            <!--<a class="btn btn-primary" href="#">Sign In</a>-->
+            <a class="btn btn-primary" href="#">Sign In</a>
           </div>
         </nav>
 

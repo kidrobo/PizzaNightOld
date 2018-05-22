@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
+using System.Net.Mail;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.Helpers;
+using System.Net;
 
 namespace PizzaNight
 {
@@ -77,12 +79,39 @@ namespace PizzaNight
                     dc.SubmitChanges();
 
                     HttpRuntime.Cache["UserID"] = newUser.ID;
-                    Response.Redirect("Deets");
+
+                    signup.Visible = false;
+                    complete.Visible = true;
+
+                    SendNewUserEmail(newUser.Username, newUser.EmailAddress);
                 }
             }
             else
             {
                 LoginError.InnerText = "PASSWORDS DO NOT MATCH. TRY HARDER.";
+                LoginError.Visible = true;
+            }
+        }
+
+        private void SendNewUserEmail(string username, string emailAddress)
+        {
+
+            try
+            {
+                // SEND THE EMAIL!!!!!
+                SmtpClient smtp = new SmtpClient("mi3-wss7.a2hosting.com");
+                smtp.Credentials = new NetworkCredential("info@pizzanight.fyi", "Sn00paloop");
+                MailMessage message = new MailMessage("info@pizzanight.fyi", "scott.robertd@gmail.com");
+                message.IsBodyHtml = true;
+                message.Subject = "Test";
+                message.Body = "<h1>THIS IS A TEST</h1>";
+                smtp.Send(message);
+                LoginError.InnerText = "SUCCESS";
+                LoginError.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                LoginError.InnerText = ex.ToString();
                 LoginError.Visible = true;
             }
         }

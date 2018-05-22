@@ -8,5 +8,11 @@
         <elementListCompartment Id="3d4470d0-70e0-443c-9102-0888c4b8ca71" absoluteBounds="5.265, 1.71, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="49847f6d-ff0e-4243-8025-47c94ca6ef6a" absoluteBounds="1.625, 1.625, 2, 1.3862939453125">
+      <DataClassMoniker Name="/PizzaNightDataContext/LaserDisc" />
+      <nestedChildShapes>
+        <elementListCompartment Id="60ffb92b-9abd-41fb-87f0-ee38797614ac" absoluteBounds="1.6400000000000001, 2.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

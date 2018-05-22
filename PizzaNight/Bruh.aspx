@@ -24,7 +24,7 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-3">
-                    <asp:Button type="submit" class="btn btn-block btn-lg btn-primary" ID="SignUp" runat="server" Text="Send Digits" OnClick="SignUp_Click" />
+                    <asp:Button type="submit" class="btn btn-block btn-lg btn-primary" ID="SignUp" runat="server" Text="Signup" OnClick="SignUp_Click" />
                 </div>
             </div>
           </div>
