@@ -12,7 +12,7 @@
     </div>
     <div class="col-lg-12">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-8">
                 <asp:GridView ID="gvDrinks" runat="server" CssClass="table" OnRowDataBound="gvDrinks_RowDataBound"></asp:GridView>
             </div>
         </div>

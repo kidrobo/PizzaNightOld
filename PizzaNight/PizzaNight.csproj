@@ -479,6 +479,12 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <PropertyGroup>
+    <PreBuildEvent>if exist "$(TargetPath).locked.bak" del "$(TargetPath).locked.bak"
+if exist "$(TargetPath).bak" del "$(TargetPath).bak"
+if exist "$(TargetPath).locked" ren "$(TargetPath).locked" "$(TargetFileName).locked.bak"
+if exist "$(TargetPath)" ren "$(TargetPath)" "$(TargetFileName).bak"</PreBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

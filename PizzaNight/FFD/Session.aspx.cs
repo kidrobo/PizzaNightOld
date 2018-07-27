@@ -70,6 +70,7 @@ namespace PizzaNight.FFD
             {
                 Text = "Take a Drink",
                 CommandArgument = id,
+                CssClass = "btn btn-default btn-xs",
                 ID = id
             };
             lb.Click += AddDrink;
