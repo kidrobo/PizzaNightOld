@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="pizzani1_FinalFantasyDrunk" Class="FinalFantasyDrunkDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=mi3-wsq3.a2hosting.com;Initial Catalog=pizzani1_FinalFantasyDrunk;Persist Security Info=True;User ID=pizzani1_ffd" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="pizzani1_FinalFantasyDrunkConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="pizzani1_ffd.Drinks" Member="Drinks">
+    <Type Name="Drink">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DrinkRule" Type="System.String" DbType="NVarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="Penalty" Type="System.String" DbType="NVarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="DateAdded" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="GameTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Drink_SessionDrink" Member="SessionDrinks" ThisKey="ID" OtherKey="DrinkID" Type="SessionDrink" />
+      <Association Name="GameType_Drink" Member="GameType" ThisKey="GameTypeID" OtherKey="ID" Type="GameType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="pizzani1_ffd.Sessions" Member="Sessions">
+    <Type Name="Session">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="GameID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DateStarted" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DateEnded" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Comments" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Association Name="Session_SessionDrink" Member="SessionDrinks" ThisKey="ID" OtherKey="SessionID" Type="SessionDrink" />
+      <Association Name="Session_SessionPlayer" Member="SessionPlayers" ThisKey="ID" OtherKey="SessionID" Type="SessionPlayer" />
+      <Association Name="Game_Session" Member="Game" ThisKey="GameID" OtherKey="ID" Type="Game" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="pizzani1_ffd.Players" Member="Players">
+    <Type Name="Player">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="Player_SessionPlayer" Member="SessionPlayers" ThisKey="ID" OtherKey="PlayerID" Type="SessionPlayer" />
+    </Type>
+  </Table>
+  <Table Name="pizzani1_ffd.SessionDrinks" Member="SessionDrinks">
+    <Type Name="SessionDrink">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SessionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DrinkID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Drink_SessionDrink" Member="Drink" ThisKey="DrinkID" OtherKey="ID" Type="Drink" IsForeignKey="true" />
+      <Association Name="Session_SessionDrink" Member="Session" ThisKey="SessionID" OtherKey="ID" Type="Session" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="pizzani1_ffd.SessionPlayers" Member="SessionPlayers">
+    <Type Name="SessionPlayer">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PlayerID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SessionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Player_SessionPlayer" Member="Player" ThisKey="PlayerID" OtherKey="ID" Type="Player" IsForeignKey="true" />
+      <Association Name="Session_SessionPlayer" Member="Session" ThisKey="SessionID" OtherKey="ID" Type="Session" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="pizzani1_ffd.Games" Member="Games">
+    <Type Name="Game">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DateStarted" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DateEnded" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CharacterName" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="GameTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LastPlayed" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Game_Session" Member="Sessions" ThisKey="ID" OtherKey="GameID" Type="Session" />
+      <Association Name="GameType_Game" Member="GameType" ThisKey="GameTypeID" OtherKey="ID" Type="GameType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="pizzani1_ffd.GameTypes" Member="GameTypes">
+    <Type Name="GameType">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="GameType_Drink" Member="Drinks" ThisKey="ID" OtherKey="GameTypeID" Type="Drink" />
+      <Association Name="GameType_Game" Member="Games" ThisKey="ID" OtherKey="GameTypeID" Type="Game" />
+    </Type>
+  </Table>
+</Database>
